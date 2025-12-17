@@ -1,0 +1,65 @@
+@model IEnumerable<WebApplication1.Models.ViewModels.CriteresEligibiliteViewModel>
+
+@{
+    ViewBag.Title = "Critères d’éligibilité";
+}
+
+<h2 class="fw-bold mb-3">Liste des critères d’éligibilité</h2>
+
+<!-- Formulaire d'ajout -->
+<div class="card mb-4 shadow-sm">
+    <div class="card-header bg-primary text-white">Ajouter un critère</div>
+    <div class="card-body">
+        @using (Html.BeginForm("Create", "CritereEligibilite", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row mb-2">
+                <div class="col">
+                    @Html.Label("Nom du critère")
+                    @Html.TextBox("NomCritere", null, new { @class = "form-control" })
+                </div>
+                <div class="col">
+                    @Html.Label("Description")
+                    @Html.TextBox("Description", null, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col">
+                    @Html.Label("Poids")
+                    @Html.TextBox("Poids", null, new { @class = "form-control", type = "number", step = "0.01" })
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Ajouter</button>
+        }
+    </div>
+</div>
+
+<!-- Tableau des critères -->
+<table class="table table-hover shadow-sm">
+    <thead class="table-primary">
+        <tr>
+            <th>Nom du critère</th>
+            <th>Description</th>
+            <th>Poids</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var critere in Model)
+            {
+                <tr>
+                    <td>@critere.NomCritere</td>
+                    <td>@critere.Description</td>
+                    <td>@critere.Poids</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="3" class="text-center text-muted">Aucun critère trouvé.</td>
+            </tr>
+        }
+    </tbody>
+</table>

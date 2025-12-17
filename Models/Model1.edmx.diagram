@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8a15fc0e6c7144aca6ee48662d7b1c5e" Name="Diagram1" ZoomLevel="73">
+        <EntityTypeShape EntityType="Database1Model.ProfilExterne" Width="1.5" PointX="0.875" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.ProfilEmploye" Width="2.125" PointX="3.5" PointY="1.125" />
+        <EntityTypeShape EntityType="Database1Model.CriteresEligibilite" Width="1.5" PointX="6.75" PointY="1.75" />
+        <EntityTypeShape EntityType="Database1Model.Diplomes" Width="1.5" PointX="0.75" PointY="6.375" />
+        <EntityTypeShape EntityType="Database1Model.HistoriqueEmploye" Width="1.5" PointX="6.75" PointY="5.375" />
+        <EntityTypeShape EntityType="Database1Model.OffresEmploi" Width="1.5" PointX="9" PointY="1" />
+        <EntityTypeShape EntityType="Database1Model.Postes" Width="1.5" PointX="8.875" PointY="5.375" />
+        <EntityTypeShape EntityType="Database1Model.ProfilScoring" Width="1.5" PointX="4.375" PointY="6.75" />
+        <AssociationConnector Association="Database1Model.FK_ProfilScoring_ProfilExterne" />
+        <AssociationConnector Association="Database1Model.OffreCritere" />
+        <AssociationConnector Association="Database1Model.FK_ProfilEmploye_Diplomes" />
+        <AssociationConnector Association="Database1Model.FK_ProfilExterne_Diplomes" />
+        <AssociationConnector Association="Database1Model.FK_HistoriqueEmploye_ProfilEmploye" />
+        <AssociationConnector Association="Database1Model.FK_ProfilEmploye_OffresEmploi" />
+        <AssociationConnector Association="Database1Model.FK_ProfilExterne_OffresEmploi" />
+        <AssociationConnector Association="Database1Model.FK_ProfilEmploye_Postes" />
+        <EntityTypeShape EntityType="Database1Model.Scoring" Width="1.5" PointX="11" PointY="5.5" />
+        <AssociationConnector Association="Database1Model.OffreCritere1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

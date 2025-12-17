@@ -1,0 +1,71 @@
+@model IEnumerable<WebApplication1.Models.ViewModels.OffresViewModel>
+
+@{
+    ViewBag.Title = "Offres";
+}
+
+<h2 class="fw-bold mb-3">Liste des Offres</h2>
+
+<!-- Formulaire d'ajout -->
+<div class="card mb-4 shadow-sm">
+    <div class="card-header bg-primary text-white">Ajouter une nouvelle offre</div>
+    <div class="card-body">
+        @using (Html.BeginForm("Create", "Offre", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row mb-2">
+                <div class="col">
+                    @Html.Label("Intitulé")
+                    @Html.TextBox("Intitule", null, new { @class = "form-control" })
+                </div>
+                <div class="col">
+                    @Html.Label("Niveau diplôme requis")
+                    @Html.TextBox("NiveauDiplomeRequis", null, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col">
+                    @Html.Label("Niveau hiérarchique")
+                    @Html.TextBox("NiveauHierarchique", null, new { @class = "form-control" })
+                </div>
+                <div class="col">
+                    @Html.Label("Mobilité requise")
+                    @Html.CheckBox("MobiliteRequise")
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Ajouter</button>
+        }
+    </div>
+</div>
+
+<!-- Tableau des offres -->
+<table class="table table-hover shadow-sm">
+    <thead class="table-primary">
+        <tr>
+            <th>Intitulé</th>
+            <th>Niveau diplôme requis</th>
+            <th>Niveau hiérarchique</th>
+            <th>Mobilité</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var offre in Model)
+            {
+                <tr>
+                    <td>@offre.Intitule</td>
+                    <td>@offre.NiveauDiplomeRequis</td>
+                    <td>@offre.NiveauHierarchique</td>
+                    <td>@(offre.MobiliteRequise ? "Oui" : "Non")</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4" class="text-center text-muted">Aucune offre disponible.</td>
+            </tr>
+        }
+    </tbody>
+</table>

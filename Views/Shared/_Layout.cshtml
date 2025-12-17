@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - InfoRH</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <!-- Barre de navigation -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+        <div class="container">
+            @Html.ActionLink("InfoRH", "Index", "Home", null, new { @class = "navbar-brand fw-bold text-white" })
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Basculer la navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                    <li class="nav-item">@Html.ActionLink("Accueil", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
+                    <li class="nav-item">@Html.ActionLink("Employés", "Index", "ProfilEmploye", null, new { @class = "nav-link text-white" })</li>
+                    <li class="nav-item">@Html.ActionLink("Profils externes", "Index", "ProfilExterne", null, new { @class = "nav-link text-white" })</li>
+                    <li class="nav-item">@Html.ActionLink("Diplômes", "Index", "Diplomes", null, new { @class = "nav-link text-white" })</li>
+                    <li class="nav-item">@Html.ActionLink("Offres d’emploi", "Index", "Offres", null, new { @class = "nav-link text-white" })</li>
+                    <li class="nav-item">@Html.ActionLink("Postes", "Index", "Postes", null, new { @class = "nav-link text-white" })</li>
+                    <li class="nav-item">@Html.ActionLink("Scoring", "Index", "Scoring", null, new { @class = "nav-link text-white" })</li>
+                    <li class="nav-item">@Html.ActionLink("Historique", "Index", "HistoriqueEmploye", null, new { @class = "nav-link text-white" })</li>
+                    <li class="nav-item">@Html.ActionLink("Critères", "Index", "CriteresEligibilite", null, new { @class = "nav-link text-white" })</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenu principal -->
+    <main class="container mt-4">
+        @RenderBody()
+        <hr />
+        <footer class="text-center text-muted py-3 small">
+            <p>&copy; @DateTime.Now.Year - InfoRH | Développé avec ASP.NET MVC</p>
+        </footer>
+    </main>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

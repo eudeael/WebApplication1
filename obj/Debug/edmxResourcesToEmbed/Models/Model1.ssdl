@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CriteresEligibilite">
+    <Key>
+      <PropertyRef Name="IdCritere" />
+    </Key>
+    <Property Name="IdCritere" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomCritere" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="Poids" Type="int" />
+  </EntityType>
+  <EntityType Name="Diplomes">
+    <Key>
+      <PropertyRef Name="IdDiplome" />
+    </Key>
+    <Property Name="IdDiplome" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomDiplome" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="NiveauDiplome" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Domaine" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HistoriqueEmploye">
+    <Key>
+      <PropertyRef Name="IdHistoriqueEmploye" />
+    </Key>
+    <Property Name="IdHistoriqueEmploye" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateDebut" Type="date" Nullable="false" />
+    <Property Name="DateFin" Type="date" />
+    <Property Name="SuiviHierarchique" Type="varchar" MaxLength="255" />
+    <Property Name="Salaire" Type="float" Nullable="false" />
+    <Property Name="EvaluationPerformance" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="PosteOccupe" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Departement" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="TypeContrat" Type="varchar" MaxLength="20" />
+    <Property Name="MotifFinContrat" Type="varchar" MaxLength="255" />
+    <Property Name="CommentairesRH" Type="varchar(max)" />
+    <Property Name="IdEmploye" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OffreCritere">
+    <Key>
+      <PropertyRef Name="IdOffreEmploi" />
+      <PropertyRef Name="IdCritere" />
+    </Key>
+    <Property Name="IdOffreEmploi" Type="int" Nullable="false" />
+    <Property Name="IdCritere" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OffresEmploi">
+    <Key>
+      <PropertyRef Name="IdOffreEmploi" />
+    </Key>
+    <Property Name="IdOffreEmploi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IntitulePoste" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Localisation" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="NiveauPoste" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DatePublication" Type="date" Nullable="false" />
+    <Property Name="Disponibilite" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TeletravailPossible" Type="bit" Nullable="false" />
+    <Property Name="TypeContrat" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="SalairePropose" Type="float" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" Nullable="false" />
+    <Property Name="DateLimiteCandidature" Type="date" Nullable="false" />
+    <Property Name="NbPostesOuverts" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Postes">
+    <Key>
+      <PropertyRef Name="IdPoste" />
+    </Key>
+    <Property Name="IdPoste" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Intitule" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="NiveauDiplomeRequis" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="NiveauHierarchique" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" Nullable="false" />
+    <Property Name="MobiliteRequise" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProfilEmploye">
+    <Key>
+      <PropertyRef Name="IdProfilEmploye" />
+    </Key>
+    <Property Name="IdProfilEmploye" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nom" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Prenom" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="DateNaissance" Type="date" Nullable="false" />
+    <Property Name="Adresse" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Sexe" Type="varchar" MaxLength="20" />
+    <Property Name="NbCongesRestants" Type="int" Nullable="false" />
+    <Property Name="TypeContrat" Type="varchar" MaxLength="20" />
+    <Property Name="LocalisationPoste" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Telephone" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateEmbauche" Type="date" Nullable="false" />
+    <Property Name="DateFinContrat" Type="date" />
+    <Property Name="StatutActif" Type="bit" Nullable="false" />
+    <Property Name="NbHeuresHebdo" Type="int" Nullable="false" />
+    <Property Name="IdDiplome" Type="int" Nullable="false" />
+    <Property Name="IdPosteActuel" Type="int" Nullable="false" />
+    <Property Name="IdOffreSouhaitee" Type="int" />
+  </EntityType>
+  <EntityType Name="ProfilExterne">
+    <Key>
+      <PropertyRef Name="IdProfilExterne" />
+    </Key>
+    <Property Name="IdProfilExterne" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nom" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Prenom" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="DateNaissance" Type="date" Nullable="false" />
+    <Property Name="Adresse" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Sexe" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Telephone" Type="varchar" MaxLength="50" />
+    <Property Name="DateCandidature" Type="date" Nullable="false" />
+    <Property Name="IdDiplome" Type="int" Nullable="false" />
+    <Property Name="IdOffreEmploi" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProfilScoring">
+    <Key>
+      <PropertyRef Name="IdScoring" />
+      <PropertyRef Name="IdProfilExterne" />
+    </Key>
+    <Property Name="IdScoring" Type="int" Nullable="false" />
+    <Property Name="IdProfilExterne" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Scoring">
+    <Key>
+      <PropertyRef Name="IdScoring" />
+    </Key>
+    <Property Name="IdScoring" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScoreGlobal" Type="float" />
+    <Property Name="DateEvaluation" Type="date" />
+    <Property Name="Commentaire" Type="varchar(max)" />
+  </EntityType>
+  <Association Name="FK_HistoriqueEmploye_ProfilEmploye">
+    <End Role="ProfilEmploye" Type="Self.ProfilEmploye" Multiplicity="1" />
+    <End Role="HistoriqueEmploye" Type="Self.HistoriqueEmploye" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProfilEmploye">
+        <PropertyRef Name="IdProfilEmploye" />
+      </Principal>
+      <Dependent Role="HistoriqueEmploye">
+        <PropertyRef Name="IdEmploye" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OffreCritere_CriteresEligibilite">
+    <End Role="CriteresEligibilite" Type="Self.CriteresEligibilite" Multiplicity="1" />
+    <End Role="OffreCritere" Type="Self.OffreCritere" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CriteresEligibilite">
+        <PropertyRef Name="IdCritere" />
+      </Principal>
+      <Dependent Role="OffreCritere">
+        <PropertyRef Name="IdCritere" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OffreCritere_OffresEmploi">
+    <End Role="OffresEmploi" Type="Self.OffresEmploi" Multiplicity="1" />
+    <End Role="OffreCritere" Type="Self.OffreCritere" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OffresEmploi">
+        <PropertyRef Name="IdOffreEmploi" />
+      </Principal>
+      <Dependent Role="OffreCritere">
+        <PropertyRef Name="IdOffreEmploi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfilEmploye_Diplomes">
+    <End Role="Diplomes" Type="Self.Diplomes" Multiplicity="1" />
+    <End Role="ProfilEmploye" Type="Self.ProfilEmploye" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Diplomes">
+        <PropertyRef Name="IdDiplome" />
+      </Principal>
+      <Dependent Role="ProfilEmploye">
+        <PropertyRef Name="IdDiplome" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfilEmploye_OffresEmploi">
+    <End Role="OffresEmploi" Type="Self.OffresEmploi" Multiplicity="0..1" />
+    <End Role="ProfilEmploye" Type="Self.ProfilEmploye" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OffresEmploi">
+        <PropertyRef Name="IdOffreEmploi" />
+      </Principal>
+      <Dependent Role="ProfilEmploye">
+        <PropertyRef Name="IdOffreSouhaitee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfilEmploye_Postes">
+    <End Role="Postes" Type="Self.Postes" Multiplicity="1" />
+    <End Role="ProfilEmploye" Type="Self.ProfilEmploye" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Postes">
+        <PropertyRef Name="IdPoste" />
+      </Principal>
+      <Dependent Role="ProfilEmploye">
+        <PropertyRef Name="IdPosteActuel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfilExterne_Diplomes">
+    <End Role="Diplomes" Type="Self.Diplomes" Multiplicity="1" />
+    <End Role="ProfilExterne" Type="Self.ProfilExterne" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Diplomes">
+        <PropertyRef Name="IdDiplome" />
+      </Principal>
+      <Dependent Role="ProfilExterne">
+        <PropertyRef Name="IdDiplome" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfilExterne_OffresEmploi">
+    <End Role="OffresEmploi" Type="Self.OffresEmploi" Multiplicity="1" />
+    <End Role="ProfilExterne" Type="Self.ProfilExterne" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OffresEmploi">
+        <PropertyRef Name="IdOffreEmploi" />
+      </Principal>
+      <Dependent Role="ProfilExterne">
+        <PropertyRef Name="IdOffreEmploi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfilScoring_ProfilExterne">
+    <End Role="ProfilExterne" Type="Self.ProfilExterne" Multiplicity="1" />
+    <End Role="ProfilScoring" Type="Self.ProfilScoring" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProfilExterne">
+        <PropertyRef Name="IdProfilExterne" />
+      </Principal>
+      <Dependent Role="ProfilScoring">
+        <PropertyRef Name="IdProfilExterne" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfilScoring_Scoring">
+    <End Role="Scoring" Type="Self.Scoring" Multiplicity="1" />
+    <End Role="ProfilScoring" Type="Self.ProfilScoring" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Scoring">
+        <PropertyRef Name="IdScoring" />
+      </Principal>
+      <Dependent Role="ProfilScoring">
+        <PropertyRef Name="IdScoring" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Database1ModelStoreContainer">
+    <EntitySet Name="CriteresEligibilite" EntityType="Self.CriteresEligibilite" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Diplomes" EntityType="Self.Diplomes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HistoriqueEmploye" EntityType="Self.HistoriqueEmploye" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OffreCritere" EntityType="Self.OffreCritere" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OffresEmploi" EntityType="Self.OffresEmploi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Postes" EntityType="Self.Postes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProfilEmploye" EntityType="Self.ProfilEmploye" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProfilExterne" EntityType="Self.ProfilExterne" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProfilScoring" EntityType="Self.ProfilScoring" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Scoring" EntityType="Self.Scoring" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_HistoriqueEmploye_ProfilEmploye" Association="Self.FK_HistoriqueEmploye_ProfilEmploye">
+      <End Role="ProfilEmploye" EntitySet="ProfilEmploye" />
+      <End Role="HistoriqueEmploye" EntitySet="HistoriqueEmploye" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OffreCritere_CriteresEligibilite" Association="Self.FK_OffreCritere_CriteresEligibilite">
+      <End Role="CriteresEligibilite" EntitySet="CriteresEligibilite" />
+      <End Role="OffreCritere" EntitySet="OffreCritere" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OffreCritere_OffresEmploi" Association="Self.FK_OffreCritere_OffresEmploi">
+      <End Role="OffresEmploi" EntitySet="OffresEmploi" />
+      <End Role="OffreCritere" EntitySet="OffreCritere" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfilEmploye_Diplomes" Association="Self.FK_ProfilEmploye_Diplomes">
+      <End Role="Diplomes" EntitySet="Diplomes" />
+      <End Role="ProfilEmploye" EntitySet="ProfilEmploye" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfilEmploye_OffresEmploi" Association="Self.FK_ProfilEmploye_OffresEmploi">
+      <End Role="OffresEmploi" EntitySet="OffresEmploi" />
+      <End Role="ProfilEmploye" EntitySet="ProfilEmploye" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfilEmploye_Postes" Association="Self.FK_ProfilEmploye_Postes">
+      <End Role="Postes" EntitySet="Postes" />
+      <End Role="ProfilEmploye" EntitySet="ProfilEmploye" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfilExterne_Diplomes" Association="Self.FK_ProfilExterne_Diplomes">
+      <End Role="Diplomes" EntitySet="Diplomes" />
+      <End Role="ProfilExterne" EntitySet="ProfilExterne" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfilExterne_OffresEmploi" Association="Self.FK_ProfilExterne_OffresEmploi">
+      <End Role="OffresEmploi" EntitySet="OffresEmploi" />
+      <End Role="ProfilExterne" EntitySet="ProfilExterne" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfilScoring_ProfilExterne" Association="Self.FK_ProfilScoring_ProfilExterne">
+      <End Role="ProfilExterne" EntitySet="ProfilExterne" />
+      <End Role="ProfilScoring" EntitySet="ProfilScoring" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfilScoring_Scoring" Association="Self.FK_ProfilScoring_Scoring">
+      <End Role="Scoring" EntitySet="Scoring" />
+      <End Role="ProfilScoring" EntitySet="ProfilScoring" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

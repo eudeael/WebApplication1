@@ -1,0 +1,79 @@
+@model IEnumerable<WebApplication1.Models.ViewModels.HistoriqueEmployeViewModel>
+
+    @{
+    ViewBag.Title = "Historique Employés";
+    }
+
+    <h2 class="fw-bold mb-3">Historique des employés</h2>
+
+    <!-- Formulaire d'ajout -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-primary text-white">Ajouter un historique</div>
+        <div class="card-body">
+            @using (Html.BeginForm("Create", "HistoriqueEmploye", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row mb-2">
+                <div class="col">
+                    @Html.Label("Nom de l'employé")
+                    @Html.TextBox("EmployeNom", null, new { @class = "form-control" })
+                </div>
+                <div class="col">
+                    @Html.Label("Poste occupé")
+                    @Html.TextBox("PosteOccupe", null, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col">
+                    @Html.Label("Date début")
+                    @Html.TextBox("DateDebut", null, new { @class = "form-control", type = "date" })
+                </div>
+                <div class="col">
+                    @Html.Label("Date fin")
+                    @Html.TextBox("DateFin", null, new { @class = "form-control", type = "date" })
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col">
+                    @Html.Label("Commentaire")
+                    @Html.TextBox("Commentaire", null, new { @class = "form-control" })
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Ajouter</button>
+        }
+        </div>
+    </div>
+
+    <!-- Tableau des historiques -->
+    <table class="table table-hover shadow-sm">
+        <thead class="table-primary">
+            <tr>
+                <th>Employé</th>
+                <th>Poste occupé</th>
+                <th>Date début</th>
+                <th>Date fin</th>
+                <th>Commentaire</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+        {
+            foreach (var h in Model)
+            {
+            <tr>
+                <td>@h.EmployeNom</td>
+                <td>@h.PosteOccupe</td>
+                <td>@h.DateDebut.ToString("d")</td>
+                <td>@(h.DateFin.HasValue ? h.DateFin.Value.ToString("d") : "(En cours)")</td>
+                <td>@h.Commentaire</td>
+            </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center text-muted">Aucun historique trouvé.</td>
+            </tr>
+        }
+        </tbody>
+    </table>

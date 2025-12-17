@@ -1,0 +1,73 @@
+@model IEnumerable<WebApplication1.Models.ViewModels.ScoringViewModel>
+
+@{
+    ViewBag.Title = "Scoring Employés";
+}
+
+<h2 class="fw-bold mb-3">Scoring des employés</h2>
+
+<!-- Formulaire d'ajout -->
+<div class="card mb-4 shadow-sm">
+    <div class="card-header bg-primary text-white">Ajouter un score</div>
+    <div class="card-body">
+        @using (Html.BeginForm("Create", "Scoring", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row mb-2">
+                <div class="col">
+                    @Html.Label("Nom de l'employé")
+                    @Html.TextBox("EmployeNom", null, new { @class = "form-control" })
+                </div>
+                <div class="col">
+                    @Html.Label("Critère")
+                    @Html.TextBox("Critere", null, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col">
+                    @Html.Label("Note (0-100)")
+                    @Html.TextBox("Note", null, new { @class = "form-control", type = "number", min = "0", max = "100" })
+                </div>
+                <div class="col">
+                    @Html.Label("Commentaire")
+                    @Html.TextBox("Commentaire", null, new { @class = "form-control" })
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Ajouter</button>
+        }
+    </div>
+</div>
+
+<!-- Tableau des scores -->
+<table class="table table-hover shadow-sm">
+    <thead class="table-primary">
+        <tr>
+            <th>Employé</th>
+            <th>Critère</th>
+            <th>Note</th>
+            <th>Commentaire</th>
+            <th>Date évaluation</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var s in Model)
+            {
+                <tr>
+                    <td>@s.EmployeNom</td>
+                    <td>@s.Critere</td>
+                    <td>@s.Note</td>
+                    <td>@s.Commentaire</td>
+                    <td>@s.DateEvaluation.ToString("d")</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center text-muted">Aucun score enregistré.</td>
+            </tr>
+        }
+    </tbody>
+</table>

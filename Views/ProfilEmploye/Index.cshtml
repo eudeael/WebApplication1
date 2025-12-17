@@ -1,0 +1,56 @@
+@model IEnumerable<WebApplication1.Models.ProfilEmploye>
+
+@{
+    ViewBag.Title = "Profils Employés";
+}
+
+<h2 class="fw-bold mb-3">Employés (détail base)</h2>
+
+<table class="table table-hover shadow-sm">
+    <thead class="table-primary">
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Téléphone</th>
+            <th>Date d’embauche</th>
+            <th>Poste actuel</th>
+            <th>Diplôme</th>
+            <th>Statut</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var employe in Model)
+            {
+                <tr>
+                    <td>@(string.IsNullOrWhiteSpace(employe.Nom) ? "(N/A)" : employe.Nom)</td>
+                    <td>@(string.IsNullOrWhiteSpace(employe.Prenom) ? "(N/A)" : employe.Prenom)</td>
+                    <td>@(string.IsNullOrWhiteSpace(employe.Email) ? "(N/A)" : employe.Email)</td>
+                    <td>@(string.IsNullOrWhiteSpace(employe.Telephone) ? "(N/A)" : employe.Telephone)</td>
+                    <td>@(employe.DateEmbauche == DateTime.MinValue ? "(N/A)" : employe.DateEmbauche.ToString("dd/MM/yyyy"))</td>
+                    <td>@(employe.Postes != null ? employe.Postes.Intitule : "(N/A)")</td>
+                    <td>@(employe.Diplomes != null ? employe.Diplomes.NomDiplome : "(N/A)")</td>
+                    <td>@(employe.StatutActif ? "Actif" : "Inactif")</td>
+                    <td>
+                        @Html.ActionLink(
+                            "Détails",
+                            "Details",
+                            "ProfilEmploye",
+                            new { id = employe.IdProfilEmploye },
+                            new { @class = "btn btn-sm btn-outline-secondary rounded-pill" }
+                        )
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="9" class="text-center text-muted">Aucun employé trouvé.</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,38 @@
+@model IEnumerable<WebApplication1.Models.Postes>
+
+@{
+    ViewBag.Title = "Postes";
+}
+
+<h2 class="fw-bold mb-3">Postes</h2>
+
+<table class="table table-hover shadow-sm">
+    <thead class="table-primary">
+        <tr>
+            <th>Intitulé</th>
+            <th>Niveau diplôme requis</th>
+            <th>Niveau hiérarchique</th>
+            <th>Mobilité</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var p in Model)
+            {
+                <tr>
+                    <td>@(string.IsNullOrEmpty(p.Intitule) ? "(N/A)" : p.Intitule)</td>
+                    <td>@(string.IsNullOrEmpty(p.NiveauDiplomeRequis) ? "(N/A)" : p.NiveauDiplomeRequis)</td>
+                    <td>@(string.IsNullOrEmpty(p.NiveauHierarchique) ? "(N/A)" : p.NiveauHierarchique)</td>
+                    <td>@(p.MobiliteRequise ? "Oui" : "Non")</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4" class="text-center text-muted">Aucun poste trouvé.</td>
+            </tr>
+        }
+    </tbody>
+</table>

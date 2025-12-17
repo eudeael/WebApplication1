@@ -1,0 +1,42 @@
+@model IEnumerable<WebApplication1.Models.ViewModels.ProfilExterneViewModel>
+
+@{
+    ViewBag.Title = "Candidats externes";
+}
+
+<h2 class="fw-bold mb-3">Candidats externes</h2>
+
+<table class="table table-hover shadow-sm">
+    <thead class="table-primary">
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Date de candidature</th>
+            <th>Diplôme</th>
+            <th>Offre liée</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var candidat in Model)
+            {
+                <tr>
+                    <td>@candidat.Nom</td>
+                    <td>@candidat.Prenom</td>
+                    <td>@candidat.Email</td>
+                    <td>@candidat.DateCandidature.ToString("dd/MM/yyyy")</td>
+                    <td>@candidat.Diplome</td>
+                    <td>@candidat.OffreEmploi</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center text-muted">Aucun candidat externe trouvé.</td>
+            </tr>
+        }
+    </tbody>
+</table>

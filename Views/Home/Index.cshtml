@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "Portail RH";
+}
+
+<main class="container my-5">
+    <!-- En-tête -->
+    <section class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-primary">Portail Ressources Humaines</h1>
+        <p class="lead text-muted">
+            Gérez vos employés, profils externes, diplômes, offres d’emploi, scoring, historique et critères d’éligibilité depuis un seul espace centralisé.
+        </p>
+        <hr class="w-25 mx-auto border-primary" />
+    </section>
+
+    <!-- Tableau de bord RH -->
+    <div class="row g-4">
+        <!-- Bloc Employés -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h2 class="card-title text-secondary">👥 Employés</h2>
+                    <p class="card-text">
+                        Accédez aux profils employés, leurs postes, diplômes et historique d’embauche.
+                    </p>
+                    <a href="@Url.Action("Index","ProfilEmploye")" class="btn btn-primary w-100">Gérer les employés</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bloc Profils externes -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h2 class="card-title text-secondary">🌍 Profils externes</h2>
+                    <p class="card-text">
+                        Consultez les profils externes et leur scoring.
+                    </p>
+                    <a href="@Url.Action("Index","ProfilExterne")" class="btn btn-primary w-100">Gérer les profils externes</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bloc Diplômes -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h2 class="card-title text-secondary">🎓 Diplômes</h2>
+                    <p class="card-text">
+                        Consultez et modifiez les diplômes associés aux profils.
+                    </p>
+                    <a href="@Url.Action("Index","Diplomes")" class="btn btn-primary w-100">Gérer les diplômes</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bloc Offres -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h2 class="card-title text-secondary">📄 Offres d’emploi</h2>
+                    <p class="card-text">
+                        Parcourez les offres et leurs critères d’éligibilité.
+                    </p>
+                    <a href="@Url.Action("Index","Offres")" class="btn btn-primary w-100">Gérer les offres</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bloc Scoring -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h2 class="card-title text-secondary">⭐ Scoring</h2>
+                    <p class="card-text">
+                        Consultez et ajustez les scores des profils internes et externes.
+                    </p>
+                    <a href="@Url.Action("Index","Scoring")" class="btn btn-primary w-100">Gérer le scoring</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bloc Historique -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h2 class="card-title text-secondary">📜 Historique d’embauche</h2>
+                    <p class="card-text">
+                        Suivez les parcours professionnels et les postes occupés.
+                    </p>
+                    <a href="@Url.Action("Index","HistoriqueEmploye")" class="btn btn-primary w-100">Gérer l’historique</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bloc Critères -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h2 class="card-title text-secondary">✅ Critères d’éligibilité</h2>
+                    <p class="card-text">
+                        Définissez et ajustez les critères pour le matching RH.
+                    </p>
+                    <a href="@Url.Action("Index","CriteresEligibilite")" class="btn btn-primary w-100">Gérer les critères</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

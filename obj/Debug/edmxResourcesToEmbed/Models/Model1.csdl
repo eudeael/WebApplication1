@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Database1Entities4" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ProfilEmploye" EntityType="Database1Model.ProfilEmploye" />
+    <EntitySet Name="ProfilExterne" EntityType="Database1Model.ProfilExterne" />
+    <EntitySet Name="CriteresEligibilite" EntityType="Database1Model.CriteresEligibilite" />
+    <EntitySet Name="Diplomes" EntityType="Database1Model.Diplomes" />
+    <EntitySet Name="HistoriqueEmploye" EntityType="Database1Model.HistoriqueEmploye" />
+    <EntitySet Name="OffresEmploi" EntityType="Database1Model.OffresEmploi" />
+    <EntitySet Name="Postes" EntityType="Database1Model.Postes" />
+    <EntitySet Name="ProfilScoring" EntityType="Database1Model.ProfilScoring" />
+    <AssociationSet Name="FK_ProfilScoring_ProfilExterne" Association="Database1Model.FK_ProfilScoring_ProfilExterne">
+      <End Role="ProfilExterne" EntitySet="ProfilExterne" />
+      <End Role="ProfilScoring" EntitySet="ProfilScoring" />
+    </AssociationSet>
+    <AssociationSet Name="OffreCritere" Association="Database1Model.OffreCritere">
+      <End Role="CriteresEligibilite" EntitySet="CriteresEligibilite" />
+      <End Role="OffresEmploi" EntitySet="OffresEmploi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfilEmploye_Diplomes" Association="Database1Model.FK_ProfilEmploye_Diplomes">
+      <End Role="Diplomes" EntitySet="Diplomes" />
+      <End Role="ProfilEmploye" EntitySet="ProfilEmploye" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfilExterne_Diplomes" Association="Database1Model.FK_ProfilExterne_Diplomes">
+      <End Role="Diplomes" EntitySet="Diplomes" />
+      <End Role="ProfilExterne" EntitySet="ProfilExterne" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HistoriqueEmploye_ProfilEmploye" Association="Database1Model.FK_HistoriqueEmploye_ProfilEmploye">
+      <End Role="ProfilEmploye" EntitySet="ProfilEmploye" />
+      <End Role="HistoriqueEmploye" EntitySet="HistoriqueEmploye" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfilEmploye_OffresEmploi" Association="Database1Model.FK_ProfilEmploye_OffresEmploi">
+      <End Role="OffresEmploi" EntitySet="OffresEmploi" />
+      <End Role="ProfilEmploye" EntitySet="ProfilEmploye" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfilExterne_OffresEmploi" Association="Database1Model.FK_ProfilExterne_OffresEmploi">
+      <End Role="OffresEmploi" EntitySet="OffresEmploi" />
+      <End Role="ProfilExterne" EntitySet="ProfilExterne" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfilEmploye_Postes" Association="Database1Model.FK_ProfilEmploye_Postes">
+      <End Role="Postes" EntitySet="Postes" />
+      <End Role="ProfilEmploye" EntitySet="ProfilEmploye" />
+    </AssociationSet>
+    <EntitySet Name="Scoring" EntityType="Database1Model.Scoring" />
+    <AssociationSet Name="OffreCritere1" Association="Database1Model.OffreCritere1">
+      <End Role="CriteresEligibilite" EntitySet="CriteresEligibilite" />
+      <End Role="OffresEmploi" EntitySet="OffresEmploi" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ProfilEmploye">
+    <Key>
+      <PropertyRef Name="IdProfilEmploye" />
+    </Key>
+    <Property Name="IdProfilEmploye" Type="Int32" Nullable="false" />
+    <Property Name="Nom" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Prenom" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DateNaissance" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Adresse" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Sexe" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NbCongesRestants" Type="Int32" Nullable="false" />
+    <Property Name="TypeContrat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LocalisationPoste" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Telephone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DateEmbauche" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateFinContrat" Type="DateTime" Precision="0" />
+    <Property Name="StatutActif" Type="Boolean" Nullable="false" />
+    <Property Name="NbHeuresHebdo" Type="Int32" Nullable="false" />
+    <Property Name="IdDiplome" Type="Int32" Nullable="false" />
+    <Property Name="IdPosteActuel" Type="Int32" Nullable="false" />
+    <Property Name="IdOffreSouhaitee" Type="Int32" />
+    <NavigationProperty Name="Diplomes" Relationship="Database1Model.FK_ProfilEmploye_Diplomes" FromRole="ProfilEmploye" ToRole="Diplomes" />
+    <NavigationProperty Name="HistoriqueEmploye" Relationship="Database1Model.FK_HistoriqueEmploye_ProfilEmploye" FromRole="ProfilEmploye" ToRole="HistoriqueEmploye" />
+    <NavigationProperty Name="OffresEmploi" Relationship="Database1Model.FK_ProfilEmploye_OffresEmploi" FromRole="ProfilEmploye" ToRole="OffresEmploi" />
+    <NavigationProperty Name="Postes" Relationship="Database1Model.FK_ProfilEmploye_Postes" FromRole="ProfilEmploye" ToRole="Postes" />
+  </EntityType>
+  <EntityType Name="ProfilExterne">
+    <Key>
+      <PropertyRef Name="IdProfilExterne" />
+    </Key>
+    <Property Name="IdProfilExterne" Type="Int32" Nullable="false" />
+    <Property Name="Nom" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Prenom" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DateNaissance" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Adresse" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Sexe" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DateCandidature" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdDiplome" Type="Int32" Nullable="false" />
+    <Property Name="IdOffreEmploi" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ProfilScoring" Relationship="Database1Model.FK_ProfilScoring_ProfilExterne" FromRole="ProfilExterne" ToRole="ProfilScoring" />
+    <NavigationProperty Name="Diplomes" Relationship="Database1Model.FK_ProfilExterne_Diplomes" FromRole="ProfilExterne" ToRole="Diplomes" />
+    <NavigationProperty Name="OffresEmploi" Relationship="Database1Model.FK_ProfilExterne_OffresEmploi" FromRole="ProfilExterne" ToRole="OffresEmploi" />
+  </EntityType>
+  <EntityType Name="CriteresEligibilite">
+    <Key>
+      <PropertyRef Name="IdCritere" />
+    </Key>
+    <Property Name="IdCritere" Type="Int32" Nullable="false" />
+    <Property Name="NomCritere" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Poids" Type="Int32" />
+    <NavigationProperty Name="OffresEmploi" Relationship="Database1Model.OffreCritere" FromRole="CriteresEligibilite" ToRole="OffresEmploi" />
+  </EntityType>
+  <EntityType Name="Diplomes">
+    <Key>
+      <PropertyRef Name="IdDiplome" />
+    </Key>
+    <Property Name="IdDiplome" Type="Int32" Nullable="false" />
+    <Property Name="NomDiplome" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="NiveauDiplome" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Domaine" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ProfilEmploye" Relationship="Database1Model.FK_ProfilEmploye_Diplomes" FromRole="Diplomes" ToRole="ProfilEmploye" />
+    <NavigationProperty Name="ProfilExterne" Relationship="Database1Model.FK_ProfilExterne_Diplomes" FromRole="Diplomes" ToRole="ProfilExterne" />
+  </EntityType>
+  <EntityType Name="HistoriqueEmploye">
+    <Key>
+      <PropertyRef Name="IdHistoriqueEmploye" />
+    </Key>
+    <Property Name="IdHistoriqueEmploye" Type="Int32" Nullable="false" />
+    <Property Name="DateDebut" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateFin" Type="DateTime" Precision="0" />
+    <Property Name="SuiviHierarchique" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Salaire" Type="Double" Nullable="false" />
+    <Property Name="EvaluationPerformance" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PosteOccupe" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Departement" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TypeContrat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MotifFinContrat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CommentairesRH" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IdEmploye" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ProfilEmploye" Relationship="Database1Model.FK_HistoriqueEmploye_ProfilEmploye" FromRole="HistoriqueEmploye" ToRole="ProfilEmploye" />
+  </EntityType>
+  <EntityType Name="OffresEmploi">
+    <Key>
+      <PropertyRef Name="IdOffreEmploi" />
+    </Key>
+    <Property Name="IdOffreEmploi" Type="Int32" Nullable="false" />
+    <Property Name="IntitulePoste" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Localisation" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="NiveauPoste" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DatePublication" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Disponibilite" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TeletravailPossible" Type="Boolean" Nullable="false" />
+    <Property Name="TypeContrat" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SalairePropose" Type="Double" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateLimiteCandidature" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="NbPostesOuverts" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CriteresEligibilite" Relationship="Database1Model.OffreCritere" FromRole="OffresEmploi" ToRole="CriteresEligibilite" />
+    <NavigationProperty Name="ProfilEmploye" Relationship="Database1Model.FK_ProfilEmploye_OffresEmploi" FromRole="OffresEmploi" ToRole="ProfilEmploye" />
+    <NavigationProperty Name="ProfilExterne" Relationship="Database1Model.FK_ProfilExterne_OffresEmploi" FromRole="OffresEmploi" ToRole="ProfilExterne" />
+  </EntityType>
+  <EntityType Name="Postes">
+    <Key>
+      <PropertyRef Name="IdPoste" />
+    </Key>
+    <Property Name="IdPoste" Type="Int32" Nullable="false" />
+    <Property Name="Intitule" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="NiveauDiplomeRequis" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="NiveauHierarchique" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MobiliteRequise" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ProfilEmploye" Relationship="Database1Model.FK_ProfilEmploye_Postes" FromRole="Postes" ToRole="ProfilEmploye" />
+  </EntityType>
+  <EntityType Name="ProfilScoring">
+    <Key>
+      <PropertyRef Name="IdScoring" />
+      <PropertyRef Name="IdProfilExterne" />
+    </Key>
+    <Property Name="IdScoring" Type="Int32" Nullable="false" />
+    <Property Name="IdProfilExterne" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ProfilExterne" Relationship="Database1Model.FK_ProfilScoring_ProfilExterne" FromRole="ProfilScoring" ToRole="ProfilExterne" />
+  </EntityType>
+  <Association Name="FK_ProfilScoring_ProfilExterne">
+    <End Type="Database1Model.ProfilExterne" Role="ProfilExterne" Multiplicity="1" />
+    <End Type="Database1Model.ProfilScoring" Role="ProfilScoring" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProfilExterne">
+        <PropertyRef Name="IdProfilExterne" />
+      </Principal>
+      <Dependent Role="ProfilScoring">
+        <PropertyRef Name="IdProfilExterne" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OffreCritere">
+    <End Type="Database1Model.CriteresEligibilite" Role="CriteresEligibilite" Multiplicity="*" />
+    <End Type="Database1Model.OffresEmploi" Role="OffresEmploi" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_ProfilEmploye_Diplomes">
+    <End Type="Database1Model.Diplomes" Role="Diplomes" Multiplicity="1" />
+    <End Type="Database1Model.ProfilEmploye" Role="ProfilEmploye" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Diplomes">
+        <PropertyRef Name="IdDiplome" />
+      </Principal>
+      <Dependent Role="ProfilEmploye">
+        <PropertyRef Name="IdDiplome" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfilExterne_Diplomes">
+    <End Type="Database1Model.Diplomes" Role="Diplomes" Multiplicity="1" />
+    <End Type="Database1Model.ProfilExterne" Role="ProfilExterne" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Diplomes">
+        <PropertyRef Name="IdDiplome" />
+      </Principal>
+      <Dependent Role="ProfilExterne">
+        <PropertyRef Name="IdDiplome" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HistoriqueEmploye_ProfilEmploye">
+    <End Type="Database1Model.ProfilEmploye" Role="ProfilEmploye" Multiplicity="1" />
+    <End Type="Database1Model.HistoriqueEmploye" Role="HistoriqueEmploye" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProfilEmploye">
+        <PropertyRef Name="IdProfilEmploye" />
+      </Principal>
+      <Dependent Role="HistoriqueEmploye">
+        <PropertyRef Name="IdEmploye" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfilEmploye_OffresEmploi">
+    <End Type="Database1Model.OffresEmploi" Role="OffresEmploi" Multiplicity="0..1" />
+    <End Type="Database1Model.ProfilEmploye" Role="ProfilEmploye" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OffresEmploi">
+        <PropertyRef Name="IdOffreEmploi" />
+      </Principal>
+      <Dependent Role="ProfilEmploye">
+        <PropertyRef Name="IdOffreSouhaitee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfilExterne_OffresEmploi">
+    <End Type="Database1Model.OffresEmploi" Role="OffresEmploi" Multiplicity="1" />
+    <End Type="Database1Model.ProfilExterne" Role="ProfilExterne" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OffresEmploi">
+        <PropertyRef Name="IdOffreEmploi" />
+      </Principal>
+      <Dependent Role="ProfilExterne">
+        <PropertyRef Name="IdOffreEmploi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfilEmploye_Postes">
+    <End Type="Database1Model.Postes" Role="Postes" Multiplicity="1" />
+    <End Type="Database1Model.ProfilEmploye" Role="ProfilEmploye" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Postes">
+        <PropertyRef Name="IdPoste" />
+      </Principal>
+      <Dependent Role="ProfilEmploye">
+        <PropertyRef Name="IdPosteActuel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Scoring">
+    <Key>
+      <PropertyRef Name="IdScoring" />
+    </Key>
+    <Property Name="IdScoring" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ScoreGlobal" Type="Double" />
+    <Property Name="DateEvaluation" Type="DateTime" Precision="0" />
+    <Property Name="Commentaire" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="OffreCritere1">
+    <End Type="Database1Model.CriteresEligibilite" Role="CriteresEligibilite" Multiplicity="*" />
+    <End Type="Database1Model.OffresEmploi" Role="OffresEmploi" Multiplicity="*" />
+  </Association>
+</Schema>

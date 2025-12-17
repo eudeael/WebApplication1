@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities4">
+    <EntitySetMapping Name="ProfilEmploye">
+      <EntityTypeMapping TypeName="IsTypeOf(Database1Model.ProfilEmploye)">
+        <MappingFragment StoreEntitySet="ProfilEmploye">
+          <ScalarProperty Name="IdProfilEmploye" ColumnName="IdProfilEmploye" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="DateNaissance" ColumnName="DateNaissance" />
+          <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+          <ScalarProperty Name="Sexe" ColumnName="Sexe" />
+          <ScalarProperty Name="NbCongesRestants" ColumnName="NbCongesRestants" />
+          <ScalarProperty Name="TypeContrat" ColumnName="TypeContrat" />
+          <ScalarProperty Name="LocalisationPoste" ColumnName="LocalisationPoste" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="DateEmbauche" ColumnName="DateEmbauche" />
+          <ScalarProperty Name="DateFinContrat" ColumnName="DateFinContrat" />
+          <ScalarProperty Name="StatutActif" ColumnName="StatutActif" />
+          <ScalarProperty Name="NbHeuresHebdo" ColumnName="NbHeuresHebdo" />
+          <ScalarProperty Name="IdDiplome" ColumnName="IdDiplome" />
+          <ScalarProperty Name="IdPosteActuel" ColumnName="IdPosteActuel" />
+          <ScalarProperty Name="IdOffreSouhaitee" ColumnName="IdOffreSouhaitee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProfilExterne">
+      <EntityTypeMapping TypeName="IsTypeOf(Database1Model.ProfilExterne)">
+        <MappingFragment StoreEntitySet="ProfilExterne">
+          <ScalarProperty Name="IdProfilExterne" ColumnName="IdProfilExterne" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="DateNaissance" ColumnName="DateNaissance" />
+          <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+          <ScalarProperty Name="Sexe" ColumnName="Sexe" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="DateCandidature" ColumnName="DateCandidature" />
+          <ScalarProperty Name="IdDiplome" ColumnName="IdDiplome" />
+          <ScalarProperty Name="IdOffreEmploi" ColumnName="IdOffreEmploi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CriteresEligibilite">
+      <EntityTypeMapping TypeName="IsTypeOf(Database1Model.CriteresEligibilite)">
+        <MappingFragment StoreEntitySet="CriteresEligibilite">
+          <ScalarProperty Name="IdCritere" ColumnName="IdCritere" />
+          <ScalarProperty Name="NomCritere" ColumnName="NomCritere" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Poids" ColumnName="Poids" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Diplomes">
+      <EntityTypeMapping TypeName="IsTypeOf(Database1Model.Diplomes)">
+        <MappingFragment StoreEntitySet="Diplomes">
+          <ScalarProperty Name="IdDiplome" ColumnName="IdDiplome" />
+          <ScalarProperty Name="NomDiplome" ColumnName="NomDiplome" />
+          <ScalarProperty Name="NiveauDiplome" ColumnName="NiveauDiplome" />
+          <ScalarProperty Name="Domaine" ColumnName="Domaine" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HistoriqueEmploye">
+      <EntityTypeMapping TypeName="IsTypeOf(Database1Model.HistoriqueEmploye)">
+        <MappingFragment StoreEntitySet="HistoriqueEmploye">
+          <ScalarProperty Name="IdHistoriqueEmploye" ColumnName="IdHistoriqueEmploye" />
+          <ScalarProperty Name="DateDebut" ColumnName="DateDebut" />
+          <ScalarProperty Name="DateFin" ColumnName="DateFin" />
+          <ScalarProperty Name="SuiviHierarchique" ColumnName="SuiviHierarchique" />
+          <ScalarProperty Name="Salaire" ColumnName="Salaire" />
+          <ScalarProperty Name="EvaluationPerformance" ColumnName="EvaluationPerformance" />
+          <ScalarProperty Name="PosteOccupe" ColumnName="PosteOccupe" />
+          <ScalarProperty Name="Departement" ColumnName="Departement" />
+          <ScalarProperty Name="TypeContrat" ColumnName="TypeContrat" />
+          <ScalarProperty Name="MotifFinContrat" ColumnName="MotifFinContrat" />
+          <ScalarProperty Name="CommentairesRH" ColumnName="CommentairesRH" />
+          <ScalarProperty Name="IdEmploye" ColumnName="IdEmploye" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OffresEmploi">
+      <EntityTypeMapping TypeName="IsTypeOf(Database1Model.OffresEmploi)">
+        <MappingFragment StoreEntitySet="OffresEmploi">
+          <ScalarProperty Name="IdOffreEmploi" ColumnName="IdOffreEmploi" />
+          <ScalarProperty Name="IntitulePoste" ColumnName="IntitulePoste" />
+          <ScalarProperty Name="Localisation" ColumnName="Localisation" />
+          <ScalarProperty Name="NiveauPoste" ColumnName="NiveauPoste" />
+          <ScalarProperty Name="DatePublication" ColumnName="DatePublication" />
+          <ScalarProperty Name="Disponibilite" ColumnName="Disponibilite" />
+          <ScalarProperty Name="TeletravailPossible" ColumnName="TeletravailPossible" />
+          <ScalarProperty Name="TypeContrat" ColumnName="TypeContrat" />
+          <ScalarProperty Name="SalairePropose" ColumnName="SalairePropose" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateLimiteCandidature" ColumnName="DateLimiteCandidature" />
+          <ScalarProperty Name="NbPostesOuverts" ColumnName="NbPostesOuverts" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Postes">
+      <EntityTypeMapping TypeName="IsTypeOf(Database1Model.Postes)">
+        <MappingFragment StoreEntitySet="Postes">
+          <ScalarProperty Name="IdPoste" ColumnName="IdPoste" />
+          <ScalarProperty Name="Intitule" ColumnName="Intitule" />
+          <ScalarProperty Name="NiveauDiplomeRequis" ColumnName="NiveauDiplomeRequis" />
+          <ScalarProperty Name="NiveauHierarchique" ColumnName="NiveauHierarchique" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="MobiliteRequise" ColumnName="MobiliteRequise" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProfilScoring">
+      <EntityTypeMapping TypeName="IsTypeOf(Database1Model.ProfilScoring)">
+        <MappingFragment StoreEntitySet="ProfilScoring">
+          <ScalarProperty Name="IdScoring" ColumnName="IdScoring" />
+          <ScalarProperty Name="IdProfilExterne" ColumnName="IdProfilExterne" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="OffreCritere" TypeName="Database1Model.OffreCritere" StoreEntitySet="OffreCritere" />
+    <EntitySetMapping Name="Scoring">
+      <EntityTypeMapping TypeName="Database1Model.Scoring">
+        <MappingFragment StoreEntitySet="Scoring">
+          <ScalarProperty Name="Commentaire" ColumnName="Commentaire" />
+          <ScalarProperty Name="DateEvaluation" ColumnName="DateEvaluation" />
+          <ScalarProperty Name="ScoreGlobal" ColumnName="ScoreGlobal" />
+          <ScalarProperty Name="IdScoring" ColumnName="IdScoring" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="OffreCritere1" TypeName="Database1Model.OffreCritere1" StoreEntitySet="OffreCritere">
+      <EndProperty Name="OffresEmploi">
+        <ScalarProperty Name="IdOffreEmploi" ColumnName="IdOffreEmploi" />
+      </EndProperty>
+      <EndProperty Name="CriteresEligibilite">
+        <ScalarProperty Name="IdCritere" ColumnName="IdCritere" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

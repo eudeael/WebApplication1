@@ -1,0 +1,32 @@
+@model IEnumerable<WebApplication1.Models.ViewModels.DiplomeViewModel>
+    @{
+    ViewBag.Title = "Liste des Diplômes";
+    }
+
+    <h2>Liste des Diplômes</h2>
+
+    <p>
+        @Html.ActionLink("Créer un nouveau Diplôme", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.NomDiplome)</th>
+            <th>@Html.DisplayNameFor(model => model.NiveauDiplome)</th>
+            <th>@Html.DisplayNameFor(model => model.Domaine)</th>
+            <th>Actions</th>
+        </tr>
+
+        @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.NomDiplome)</td>
+            <td>@Html.DisplayFor(modelItem => item.NiveauDiplome)</td>
+            <td>@Html.DisplayFor(modelItem => item.Domaine)</td>
+            <td>
+                @Html.ActionLink("Modifier", "Edit", new { id = item.IdDiplome }) |
+                @Html.ActionLink("Détails", "Details", new { id = item.IdDiplome })
+            </td>
+        </tr>
+    }
+    </table>
