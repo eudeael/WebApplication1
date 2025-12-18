@@ -8,10 +8,10 @@ namespace WebApplication1.Controllers
     public class OffresController : Controller
     {
         // Stockage temporaire en mémoire (à remplacer par EF/BDD)
-        private static List<OffresViewModel> _offres = new List<OffresViewModel>
+        private static List<OffresModel> _offres = new List<OffresModel>
         {
-            new OffresViewModel { Id = 1, Intitule = "Développeur .NET", NiveauDiplomeRequis = "Master Informatique", NiveauHierarchique = "Cadre", MobiliteRequise = true },
-            new OffresViewModel { Id = 2, Intitule = "Assistant RH", NiveauDiplomeRequis = "Licence Gestion", NiveauHierarchique = "Employé", MobiliteRequise = false }
+            new OffresModel { Id = 1, Intitule = "Développeur .NET", NiveauDiplomeRequis = "Master Informatique", NiveauHierarchique = "Cadre", MobiliteRequise = true },
+            new OffresModel { Id = 2, Intitule = "Assistant RH", NiveauDiplomeRequis = "Licence Gestion", NiveauHierarchique = "Employé", MobiliteRequise = false }
         };
 
         // GET: Offre
@@ -23,7 +23,7 @@ namespace WebApplication1.Controllers
         // POST: Offre/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(OffresViewModel offre)
+        public ActionResult Create(OffresModel offre)
         {
             if (ModelState.IsValid)
             {

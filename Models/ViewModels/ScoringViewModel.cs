@@ -2,7 +2,7 @@ using System;
 
 namespace WebApplication1.Models.ViewModels
 {
-    public class ScoringViewModel
+    public class ScoringModel
     {
         public int Id { get; set; }
         public string EmployeNom { get; set; }

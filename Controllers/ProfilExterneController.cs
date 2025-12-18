@@ -1,56 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Linq;
 using System.Web.Mvc;
-using WebApplication1.Models.ViewModels;
+using WebApplication1.Data;
+using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
     public class ProfilExterneController : Controller
     {
+        private readonly ApplicationDbContext _context = new ApplicationDbContext();
+
         // GET: ProfilExterne
         public ActionResult Index()
         {
-            var candidats = new List<ProfilExterneViewModel>
-            {
-                new ProfilExterneViewModel
-                {
-                    Id = 1,
-                    Nom = "Durand",
-                    Prenom = "Alice",
-                    Email = "alice.durand@example.com",
-                    DateCandidature = DateTime.Now.AddDays(-10),
-                    Diplome = "Master Informatique",
-                    OffreEmploi = "Développeur .NET"
-                },
-                new ProfilExterneViewModel
-                {
-                    Id = 2,
-                    Nom = "Martin",
-                    Prenom = "Bob",
-                    Email = "bob.martin@example.com",
-                    DateCandidature = DateTime.Now.AddDays(-5),
-                    Diplome = "Licence Gestion",
-                    OffreEmploi = "Assistant RH"
-                }
-            };
-
+            var candidats = _context.ProfilsExternes.ToList();
             return View(candidats);
         }
 
         // GET: ProfilExterne/Details/5
         public ActionResult Details(int id)
         {
-            var candidat = new ProfilExterneViewModel
-            {
-                Id = id,
-                Nom = "Exemple",
-                Prenom = "Test",
-                Email = "test@example.com",
-                DateCandidature = DateTime.Now,
-                Diplome = "Diplôme fictif",
-                OffreEmploi = "Poste fictif"
-            };
-
+            var candidat = _context.ProfilsExternes.Find(id);
+            if (candidat == null) return HttpNotFound();
             return View(candidat);
         }
 
@@ -63,11 +33,12 @@ namespace WebApplication1.Controllers
         // POST: ProfilExterne/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ProfilExterneViewModel candidat)
+        public ActionResult Create(ProfilExterne candidat)
         {
             if (ModelState.IsValid)
             {
-                // Sauvegarde en base à implémenter
+                _context.ProfilsExternes.Add(candidat);
+                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(candidat);
@@ -76,28 +47,20 @@ namespace WebApplication1.Controllers
         // GET: ProfilExterne/Edit/5
         public ActionResult Edit(int id)
         {
-            var candidat = new ProfilExterneViewModel
-            {
-                Id = id,
-                Nom = "Exemple",
-                Prenom = "Test",
-                Email = "test@example.com",
-                DateCandidature = DateTime.Now,
-                Diplome = "Diplôme fictif",
-                OffreEmploi = "Poste fictif"
-            };
-
+            var candidat = _context.ProfilsExternes.Find(id);
+            if (candidat == null) return HttpNotFound();
             return View(candidat);
         }
 
         // POST: ProfilExterne/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(ProfilExterneViewModel candidat)
+        public ActionResult Edit(ProfilExterne candidat)
         {
             if (ModelState.IsValid)
             {
-                // Mise à jour en base à implémenter
+                _context.Entry(candidat).State = System.Data.Entity.EntityState.Modified;
+                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(candidat);
@@ -106,17 +69,8 @@ namespace WebApplication1.Controllers
         // GET: ProfilExterne/Delete/5
         public ActionResult Delete(int id)
         {
-            var candidat = new ProfilExterneViewModel
-            {
-                Id = id,
-                Nom = "Exemple",
-                Prenom = "Test",
-                Email = "test@example.com",
-                DateCandidature = DateTime.Now,
-                Diplome = "Diplôme fictif",
-                OffreEmploi = "Poste fictif"
-            };
-
+            var candidat = _context.ProfilsExternes.Find(id);
+            if (candidat == null) return HttpNotFound();
             return View(candidat);
         }
 
@@ -125,7 +79,12 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            // Suppression en base à implémenter
+            var candidat = _context.ProfilsExternes.Find(id);
+            if (candidat != null)
+            {
+                _context.ProfilsExternes.Remove(candidat);
+                _context.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
     }

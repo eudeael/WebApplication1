@@ -8,10 +8,10 @@ namespace WebApplication1.Controllers
     public class ScoringController : Controller
     {
         // Stockage temporaire en mémoire (à remplacer par EF/BDD)
-        private static List<ScoringViewModel> _scores = new List<ScoringViewModel>
+        private static List<ScoringModel> _scores = new List<ScoringModel>
         {
-            new ScoringViewModel { Id = 1, EmployeNom = "Durand Alice", Critere = "Performance", Note = 85, Commentaire = "Très bon travail", DateEvaluation = DateTime.Now.AddDays(-10) },
-            new ScoringViewModel { Id = 2, EmployeNom = "Martin Bob", Critere = "Ponctualité", Note = 70, Commentaire = "Quelques retards", DateEvaluation = DateTime.Now.AddDays(-5) }
+            new ScoringModel { Id = 1, EmployeNom = "Durand Alice", Critere = "Performance", Note = 85, Commentaire = "Très bon travail", DateEvaluation = DateTime.Now.AddDays(-10) },
+            new ScoringModel { Id = 2, EmployeNom = "Martin Bob", Critere = "Ponctualité", Note = 70, Commentaire = "Quelques retards", DateEvaluation = DateTime.Now.AddDays(-5) }
         };
 
         // GET: Scoring
@@ -23,7 +23,7 @@ namespace WebApplication1.Controllers
         // POST: Scoring/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ScoringViewModel score)
+        public ActionResult Create(ScoringModel score)
         {
             if (ModelState.IsValid)
             {

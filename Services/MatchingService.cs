@@ -16,12 +16,12 @@ namespace WebApplication1.Services
         }
 
         // Règles : distance calculée, pas de rétrogradation (niveau offre >= niveau actuel), max +5 niveaux
-        public List<EmploiRowVM> MatchOffersForEmployee(
+        public List<PostesModel> MatchOffersForEmployee(
             ProfilEmploye profil,
             List<OffresEmploi> offres,
             List<Postes> postesReference)
         {
-            var result = new List<EmploiRowVM>();
+            var result = new List<PostesModel>();
 
             if (profil == null || offres == null || !offres.Any())
                 return result;
@@ -47,7 +47,7 @@ namespace WebApplication1.Services
                     distance = _distanceService.CalculateDistanceKm(profil.Adresse, offre.Localisation);
                 }
 
-                result.Add(new EmploiRowVM
+                result.Add(new PostesModel
                 {
                     IdOffre = offre.IdOffreEmploi,
                     IntitulePoste = offre.IntitulePoste,

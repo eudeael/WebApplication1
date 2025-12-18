@@ -9,11 +9,11 @@ namespace WebApplication1.Controllers
     public class DiplomesController : Controller
     {
       
-        private static List<DiplomeViewModel> _diplomes = new List<DiplomeViewModel>
+        private static List<DiplomeModel> _diplomes = new List<DiplomeModel>
         {
             // Données initiales en dur inspirées par votre entité Diplomes
-            new DiplomeViewModel { IdDiplome = 1, NomDiplome = "Licence Informatique", NiveauDiplome = "Bac+3", Domaine = "IT" },
-            new DiplomeViewModel { IdDiplome = 2, NomDiplome = "Master RH", NiveauDiplome = "Bac+5", Domaine = "Ressources Humaines" }
+            new DiplomeModel { IdDiplome = 1, NomDiplome = "Licence Informatique", NiveauDiplome = "Bac+3", Domaine = "IT" },
+            new DiplomeModel { IdDiplome = 2, NomDiplome = "Master RH", NiveauDiplome = "Bac+5", Domaine = "Ressources Humaines" }
         };
         
         public ActionResult Index()
@@ -29,7 +29,7 @@ namespace WebApplication1.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(DiplomeViewModel diplome)
+        public ActionResult Create(DiplomeModel diplome)
         {
             if (ModelState.IsValid)
             {

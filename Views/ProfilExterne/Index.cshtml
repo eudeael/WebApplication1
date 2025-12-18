@@ -1,4 +1,4 @@
-@model IEnumerable<WebApplication1.Models.ViewModels.ProfilExterneViewModel>
+@model IEnumerable<WebApplication1.Models.ProfilExterne>
 
 @{
     ViewBag.Title = "Candidats externes";
@@ -6,6 +6,29 @@
 
 <h2 class="fw-bold mb-3">Candidats externes</h2>
 
+<!-- Formulaire de création directement sur la page -->
+<div class="card mb-4 shadow-sm">
+    <div class="card-header bg-success text-white">Ajouter un candidat</div>
+    <div class="card-body">
+        @using (Html.BeginForm("Create", "ProfilExterne", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row mb-2">
+                <div class="col">@Html.TextBox("Nom", null, new { @class = "form-control", placeholder = "Nom" })</div>
+                <div class="col">@Html.TextBox("Prenom", null, new { @class = "form-control", placeholder = "Prénom" })</div>
+                <div class="col">@Html.TextBox("Email", null, new { @class = "form-control", placeholder = "Email" })</div>
+            </div>
+            <div class="row mb-2">
+                <div class="col">@Html.TextBox("Diplome", null, new { @class = "form-control", placeholder = "Diplôme" })</div>
+                <div class="col">@Html.TextBox("OffreEmploi", null, new { @class = "form-control", placeholder = "Offre liée" })</div>
+                <div class="col">@Html.TextBox("DateCandidature", DateTime.Now.ToString("yyyy-MM-dd"), new { @class = "form-control", type = "date" })</div>
+            </div>
+            <button type="submit" class="btn btn-success">Ajouter</button>
+        }
+    </div>
+</div>
+
+<!-- Tableau des candidats avec actions -->
 <table class="table table-hover shadow-sm">
     <thead class="table-primary">
         <tr>
@@ -15,6 +38,7 @@
             <th>Date de candidature</th>
             <th>Diplôme</th>
             <th>Offre liée</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -29,13 +53,33 @@
                     <td>@candidat.DateCandidature.ToString("dd/MM/yyyy")</td>
                     <td>@candidat.Diplome</td>
                     <td>@candidat.OffreEmploi</td>
+                    <td>
+                        <!-- Bouton détails -->
+                        @Html.ActionLink("Détails", "Details", new { id = candidat.Id }, new { @class = "btn btn-info btn-sm me-1" })
+
+                        <!-- Formulaire inline pour édition -->
+                        @using (Html.BeginForm("Edit", "ProfilExterne", FormMethod.Post, new { @class = "d-inline" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("Id", candidat.Id)
+                            <button type="submit" class="btn btn-warning btn-sm me-1">Modifier</button>
+                        }
+
+                        <!-- Formulaire inline pour suppression -->
+                        @using (Html.BeginForm("DeleteConfirmed", "ProfilExterne", FormMethod.Post, new { @class = "d-inline" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("Id", candidat.Id)
+                            <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                        }
+                    </td>
                 </tr>
             }
         }
         else
         {
             <tr>
-                <td colspan="6" class="text-center text-muted">Aucun candidat externe trouvé.</td>
+                <td colspan="7" class="text-center text-muted">Aucun candidat externe trouvé.</td>
             </tr>
         }
     </tbody>

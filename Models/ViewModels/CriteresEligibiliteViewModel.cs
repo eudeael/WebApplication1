@@ -2,7 +2,7 @@
 
 namespace WebApplication1.Models.ViewModels
 {
-    public class CriteresEligibiliteViewModel
+    public class CriteresEligibiliteModel
     {
         public int Id { get; set; }
         public string NomCritere { get; set; }

@@ -2,7 +2,7 @@ using System;
 
 namespace WebApplication1.Models.ViewModels
 {
-    public class OffresViewModel
+    public class OffresModel
     {
         public int Id { get; set; }
         public string Intitule { get; set; }
