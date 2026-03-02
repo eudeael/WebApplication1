@@ -11,7 +11,7 @@ namespace WebApplication1.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class ProfilEmploye
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +19,7 @@ namespace WebApplication1.Models
         {
             this.HistoriqueEmploye = new HashSet<HistoriqueEmploye>();
         }
-    
+
         public int IdProfilEmploye { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
@@ -38,8 +38,8 @@ namespace WebApplication1.Models
         public int IdDiplome { get; set; }
         public int IdPosteActuel { get; set; }
         public Nullable<int> IdOffreSouhaitee { get; set; }
-    
-        public virtual Diplomes Diplomes { get; set; }
+
+        public virtual Diplome Diplome { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HistoriqueEmploye> HistoriqueEmploye { get; set; }
         public virtual OffresEmploi OffresEmploi { get; set; }

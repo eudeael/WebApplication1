@@ -1,23 +1,23 @@
-@model IEnumerable<WebApplication1.Models.ViewModels.DiplomeViewModel>
-    @{
-    ViewBag.Title = "Liste des Diplômes";
-    }
+ï»¿@model IEnumerable<WebApplication1.Models.ViewModels.DiplomeViewModel>
+@{
+    ViewBag.Title = "Liste des Diplï¿½mes";
+}
 
-    <h2>Liste des Diplômes</h2>
+<h2>Liste des Diplï¿½mes</h2>
 
-    <p>
-        @Html.ActionLink("Créer un nouveau Diplôme", "Create", null, new { @class = "btn btn-primary" })
-    </p>
+<p>
+    @Html.ActionLink("Crï¿½er un nouveau Diplï¿½me", "Create", null, new { @class = "btn btn-primary" })
+</p>
 
-    <table class="table">
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.NomDiplome)</th>
-            <th>@Html.DisplayNameFor(model => model.NiveauDiplome)</th>
-            <th>@Html.DisplayNameFor(model => model.Domaine)</th>
-            <th>Actions</th>
-        </tr>
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.NomDiplome)</th>
+        <th>@Html.DisplayNameFor(model => model.NiveauDiplome)</th>
+        <th>@Html.DisplayNameFor(model => model.Domaine)</th>
+        <th>Actions</th>
+    </tr>
 
-        @foreach (var item in Model)
+    @foreach (var item in Model)
     {
         <tr>
             <td>@Html.DisplayFor(modelItem => item.NomDiplome)</td>
@@ -25,8 +25,8 @@
             <td>@Html.DisplayFor(modelItem => item.Domaine)</td>
             <td>
                 @Html.ActionLink("Modifier", "Edit", new { id = item.IdDiplome }) |
-                @Html.ActionLink("Détails", "Details", new { id = item.IdDiplome })
+                @Html.ActionLink("Dï¿½tails", "Details", new { id = item.IdDiplome })
             </td>
         </tr>
     }
-    </table>
+</table>

@@ -1,10 +1,10 @@
-@model IEnumerable<WebApplication1.Models.ViewModels.ScoringViewModel>
+ï»¿@model IEnumerable<WebApplication1.Models.ViewModels.ScoringViewModel>
 
 @{
-    ViewBag.Title = "Scoring Employés";
+    ViewBag.Title = "Scoring EmployÃ©s";
 }
 
-<h2 class="fw-bold mb-3">Scoring des employés</h2>
+<h2 class="fw-bold mb-3">Scoring des employÃ©s</h2>
 
 <!-- Formulaire d'ajout -->
 <div class="card mb-4 shadow-sm">
@@ -15,11 +15,11 @@
             @Html.AntiForgeryToken()
             <div class="row mb-2">
                 <div class="col">
-                    @Html.Label("Nom de l'employé")
+                    @Html.Label("Nom de l'employÃ©")
                     @Html.TextBox("EmployeNom", null, new { @class = "form-control" })
                 </div>
                 <div class="col">
-                    @Html.Label("Critère")
+                    @Html.Label("CritÃ¨re")
                     @Html.TextBox("Critere", null, new { @class = "form-control" })
                 </div>
             </div>
@@ -42,11 +42,11 @@
 <table class="table table-hover shadow-sm">
     <thead class="table-primary">
         <tr>
-            <th>Employé</th>
-            <th>Critère</th>
+            <th>EmployÃ©</th>
+            <th>CritÃ¨re</th>
             <th>Note</th>
             <th>Commentaire</th>
-            <th>Date évaluation</th>
+            <th>Date Ã©valuation</th>
         </tr>
     </thead>
     <tbody>
@@ -66,7 +66,7 @@
         else
         {
             <tr>
-                <td colspan="5" class="text-center text-muted">Aucun score enregistré.</td>
+                <td colspan="5" class="text-center text-muted">Aucun score enregistrÃ©.</td>
             </tr>
         }
     </tbody>

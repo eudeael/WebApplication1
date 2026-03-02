@@ -11,7 +11,7 @@ namespace WebApplication1.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class OffresEmploi
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +21,7 @@ namespace WebApplication1.Models
             this.ProfilEmploye = new HashSet<ProfilEmploye>();
             this.ProfilExterne = new HashSet<ProfilExterne>();
         }
-    
+
         public int IdOffreEmploi { get; set; }
         public string IntitulePoste { get; set; }
         public string Localisation { get; set; }
@@ -34,12 +34,14 @@ namespace WebApplication1.Models
         public string Description { get; set; }
         public System.DateTime DateLimiteCandidature { get; set; }
         public int NbPostesOuverts { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CriteresEligibilite> CriteresEligibilite { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProfilEmploye> ProfilEmploye { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProfilExterne> ProfilExterne { get; set; }
+        public int IdDiplome { get; set; }
+        public virtual Diplome Diplome { get; set; }
     }
 }

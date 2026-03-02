@@ -28,7 +28,7 @@ namespace WebApplication1.Models
         public virtual DbSet<ProfilEmploye> ProfilEmploye { get; set; }
         public virtual DbSet<ProfilExterne> ProfilExterne { get; set; }
         public virtual DbSet<CriteresEligibilite> CriteresEligibilite { get; set; }
-        public virtual DbSet<Diplomes> Diplomes { get; set; }
+        public virtual DbSet<Diplome> Diplome { get; set; }
         public virtual DbSet<HistoriqueEmploye> HistoriqueEmploye { get; set; }
         public virtual DbSet<OffresEmploi> OffresEmploi { get; set; }
         public virtual DbSet<Postes> Postes { get; set; }

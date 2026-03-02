@@ -11,7 +11,7 @@ namespace WebApplication1.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class CriteresEligibilite
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,12 +19,12 @@ namespace WebApplication1.Models
         {
             this.OffresEmploi = new HashSet<OffresEmploi>();
         }
-    
+
         public int IdCritere { get; set; }
         public string NomCritere { get; set; }
         public string Description { get; set; }
         public Nullable<int> Poids { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OffresEmploi> OffresEmploi { get; set; }
     }

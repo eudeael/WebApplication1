@@ -1,21 +1,21 @@
-@model IEnumerable<WebApplication1.Models.ViewModels.CriteresEligibiliteViewModel>
+ï»¿@model IEnumerable<WebApplication1.Models.ViewModels.CriteresEligibiliteViewModel>
 
 @{
-    ViewBag.Title = "Critères d’éligibilité";
+    ViewBag.Title = "Critï¿½res dï¿½ï¿½ligibilitï¿½";
 }
 
-<h2 class="fw-bold mb-3">Liste des critères d’éligibilité</h2>
+<h2 class="fw-bold mb-3">Liste des critï¿½res dï¿½ï¿½ligibilitï¿½</h2>
 
 <!-- Formulaire d'ajout -->
 <div class="card mb-4 shadow-sm">
-    <div class="card-header bg-primary text-white">Ajouter un critère</div>
+    <div class="card-header bg-primary text-white">Ajouter un critï¿½re</div>
     <div class="card-body">
         @using (Html.BeginForm("Create", "CritereEligibilite", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
             <div class="row mb-2">
                 <div class="col">
-                    @Html.Label("Nom du critère")
+                    @Html.Label("Nom du critï¿½re")
                     @Html.TextBox("NomCritere", null, new { @class = "form-control" })
                 </div>
                 <div class="col">
@@ -34,11 +34,11 @@
     </div>
 </div>
 
-<!-- Tableau des critères -->
+<!-- Tableau des critï¿½res -->
 <table class="table table-hover shadow-sm">
     <thead class="table-primary">
         <tr>
-            <th>Nom du critère</th>
+            <th>Nom du critï¿½re</th>
             <th>Description</th>
             <th>Poids</th>
         </tr>
@@ -58,7 +58,7 @@
         else
         {
             <tr>
-                <td colspan="3" class="text-center text-muted">Aucun critère trouvé.</td>
+                <td colspan="3" class="text-center text-muted">Aucun critï¿½re trouvï¿½.</td>
             </tr>
         }
     </tbody>

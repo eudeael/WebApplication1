@@ -1,57 +1,102 @@
-﻿/* Set padding to keep content from hitting the edges */
+﻿/* Contenu principal */
 .body-content {
-    margin-top: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
+/* Listes horizontales */
 .dl-horizontal dt {
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
+/* Champs de formulaire */
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 100%;
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Styles personnalisés InfoRH */
+    input:focus,
+    select:focus,
+    textarea:focus {
+        border-color: #3498db;
+        box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+    }
+
+/* Styles globaux */
 body {
     background-color: #f8f9fa;
     color: #212529;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    line-height: 1.6;
 }
 
+/* Titres */
 h1, h2, h3, .fw-bold {
     font-weight: 700;
+    color: #2c3e50;
 }
 
+/* Boutons */
 .btn {
     border-radius: 999px;
+    font-weight: 500;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+/* Tableaux */
 .table {
     background-color: #fff;
-    border-radius: 6px;
+    border-radius: 8px;
     overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
-.table thead {
+    .table thead {
+        font-weight: 600;
+        background-color: #3498db;
+        color: #fff;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f1f9ff;
+    }
+
+/* Cartes */
+.card {
+    border-radius: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+/* Navbar */
+.navbar-brand {
+    letter-spacing: .4px;
     font-weight: 600;
 }
 
-.card {
-    border-radius: 8px;
+/* Footer */
+footer {
+    background-color: #fff;
+    border-top: 1px solid #dee2e6;
+    padding: 15px 0;
+    text-align: center;
 }
 
-.navbar-brand {
-    letter-spacing: .4px;
-}
-
-footer small {
-    font-size: 0.9rem;
-}
+    footer small {
+        font-size: 0.9rem;
+        color: #6c757d;
+    }

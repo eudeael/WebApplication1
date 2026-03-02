@@ -1,4 +1,4 @@
-@model IEnumerable<WebApplication1.Models.ProfilExterne>
+ï»¿@model IEnumerable<WebApplication1.Models.ProfilExterne>
 
 @{
     ViewBag.Title = "Candidats externes";
@@ -6,7 +6,7 @@
 
 <h2 class="fw-bold mb-3">Candidats externes</h2>
 
-<!-- Formulaire de création directement sur la page -->
+<!-- Formulaire de crï¿½ation directement sur la page -->
 <div class="card mb-4 shadow-sm">
     <div class="card-header bg-success text-white">Ajouter un candidat</div>
     <div class="card-body">
@@ -15,12 +15,12 @@
             @Html.AntiForgeryToken()
             <div class="row mb-2">
                 <div class="col">@Html.TextBox("Nom", null, new { @class = "form-control", placeholder = "Nom" })</div>
-                <div class="col">@Html.TextBox("Prenom", null, new { @class = "form-control", placeholder = "Prénom" })</div>
+                <div class="col">@Html.TextBox("Prenom", null, new { @class = "form-control", placeholder = "Prï¿½nom" })</div>
                 <div class="col">@Html.TextBox("Email", null, new { @class = "form-control", placeholder = "Email" })</div>
             </div>
             <div class="row mb-2">
-                <div class="col">@Html.TextBox("Diplome", null, new { @class = "form-control", placeholder = "Diplôme" })</div>
-                <div class="col">@Html.TextBox("OffreEmploi", null, new { @class = "form-control", placeholder = "Offre liée" })</div>
+                <div class="col">@Html.TextBox("Diplome", null, new { @class = "form-control", placeholder = "Diplï¿½me" })</div>
+                <div class="col">@Html.TextBox("OffreEmploi", null, new { @class = "form-control", placeholder = "Offre liï¿½e" })</div>
                 <div class="col">@Html.TextBox("DateCandidature", DateTime.Now.ToString("yyyy-MM-dd"), new { @class = "form-control", type = "date" })</div>
             </div>
             <button type="submit" class="btn btn-success">Ajouter</button>
@@ -33,11 +33,11 @@
     <thead class="table-primary">
         <tr>
             <th>Nom</th>
-            <th>Prénom</th>
+            <th>Prï¿½nom</th>
             <th>Email</th>
             <th>Date de candidature</th>
-            <th>Diplôme</th>
-            <th>Offre liée</th>
+            <th>Diplï¿½me</th>
+            <th>Offre liï¿½e</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -54,10 +54,10 @@
                     <td>@candidat.Diplome</td>
                     <td>@candidat.OffreEmploi</td>
                     <td>
-                        <!-- Bouton détails -->
-                        @Html.ActionLink("Détails", "Details", new { id = candidat.Id }, new { @class = "btn btn-info btn-sm me-1" })
+                        <!-- Bouton dï¿½tails -->
+                        @Html.ActionLink("Dï¿½tails", "Details", new { id = candidat.Id }, new { @class = "btn btn-info btn-sm me-1" })
 
-                        <!-- Formulaire inline pour édition -->
+                        <!-- Formulaire inline pour ï¿½dition -->
                         @using (Html.BeginForm("Edit", "ProfilExterne", FormMethod.Post, new { @class = "d-inline" }))
                         {
                             @Html.AntiForgeryToken()
@@ -79,7 +79,7 @@
         else
         {
             <tr>
-                <td colspan="7" class="text-center text-muted">Aucun candidat externe trouvé.</td>
+                <td colspan="7" class="text-center text-muted">Aucun candidat externe trouvï¿½.</td>
             </tr>
         }
     </tbody>

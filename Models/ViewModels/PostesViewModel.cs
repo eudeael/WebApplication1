@@ -1,6 +1,6 @@
 ﻿namespace WebApplication1.Models.ViewModels
 {
-    public class PostesModel
+    public class PostesViewModel
     {
         public int IdOffre { get; set; }
         public string IntitulePoste { get; set; }

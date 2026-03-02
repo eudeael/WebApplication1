@@ -1,10 +1,10 @@
 ﻿namespace WebApplication1.Models.ViewModels
 {
-    public class DiplomeModel
+    public class DiplomeViewModel
     {
         public int IdDiplome { get; set; }
-        public string NomDiplome { get; set; }
-        public string NiveauDiplome { get; set; }
+        public string Intitule { get; set; }
+        public string Niveau { get; set; }
         public string Domaine { get; set; }
     }
 }

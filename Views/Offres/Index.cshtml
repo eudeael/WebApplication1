@@ -1,4 +1,4 @@
-@model IEnumerable<WebApplication1.Models.ViewModels.OffresViewModel>
+ï»¿@model IEnumerable<WebApplication1.Models.ViewModels.OffresViewModel>
 
 @{
     ViewBag.Title = "Offres";
@@ -15,21 +15,21 @@
             @Html.AntiForgeryToken()
             <div class="row mb-2">
                 <div class="col">
-                    @Html.Label("Intitulé")
+                    @Html.Label("Intitulï¿½")
                     @Html.TextBox("Intitule", null, new { @class = "form-control" })
                 </div>
                 <div class="col">
-                    @Html.Label("Niveau diplôme requis")
+                    @Html.Label("Niveau diplï¿½me requis")
                     @Html.TextBox("NiveauDiplomeRequis", null, new { @class = "form-control" })
                 </div>
             </div>
             <div class="row mb-2">
                 <div class="col">
-                    @Html.Label("Niveau hiérarchique")
+                    @Html.Label("Niveau hiï¿½rarchique")
                     @Html.TextBox("NiveauHierarchique", null, new { @class = "form-control" })
                 </div>
                 <div class="col">
-                    @Html.Label("Mobilité requise")
+                    @Html.Label("Mobilitï¿½ requise")
                     @Html.CheckBox("MobiliteRequise")
                 </div>
             </div>
@@ -42,10 +42,10 @@
 <table class="table table-hover shadow-sm">
     <thead class="table-primary">
         <tr>
-            <th>Intitulé</th>
-            <th>Niveau diplôme requis</th>
-            <th>Niveau hiérarchique</th>
-            <th>Mobilité</th>
+            <th>Intitulï¿½</th>
+            <th>Niveau diplï¿½me requis</th>
+            <th>Niveau hiï¿½rarchique</th>
+            <th>Mobilitï¿½</th>
         </tr>
     </thead>
     <tbody>

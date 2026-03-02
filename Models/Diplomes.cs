@@ -7,28 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
 namespace WebApplication1.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Diplomes
+    public class Diplome
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Diplomes()
-        {
-            this.ProfilEmploye = new HashSet<ProfilEmploye>();
-            this.ProfilExterne = new HashSet<ProfilExterne>();
-        }
-    
+        [Key]
         public int IdDiplome { get; set; }
-        public string NomDiplome { get; set; }
-        public string NiveauDiplome { get; set; }
-        public string Domaine { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProfilEmploye> ProfilEmploye { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProfilExterne> ProfilExterne { get; set; }
+
+        public string Intitule { get; set; }
+        public string Niveau { get; set; }
     }
 }

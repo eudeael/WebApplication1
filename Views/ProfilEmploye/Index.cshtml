@@ -1,22 +1,44 @@
-@model IEnumerable<WebApplication1.Models.ProfilEmploye>
+Ôªø@model IEnumerable<WebApplication1.Models.ProfilEmploye>
 
 @{
-    ViewBag.Title = "Profils EmployÈs";
+    ViewBag.Title = "Profils employ√©s";
 }
 
-<h2 class="fw-bold mb-3">EmployÈs (dÈtail base)</h2>
+<h2 class="fw-bold mb-3">Profils employ√©s</h2>
 
+<!-- Formulaire de cr√©ation directement sur la page -->
+<div class="card mb-4 shadow-sm">
+    <div class="card-header bg-success text-white">Ajouter un employ√©</div>
+    <div class="card-body">
+        @using (Html.BeginForm("Create", "ProfilEmploye", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row mb-2">
+                <div class="col">@Html.TextBox("Nom", null, new { @class = "form-control", placeholder = "Nom" })</div>
+                <div class="col">@Html.TextBox("Prenom", null, new { @class = "form-control", placeholder = "Pr√©nom" })</div>
+                <div class="col">@Html.TextBox("Email", null, new { @class = "form-control", placeholder = "Email" })</div>
+            </div>
+            <div class="row mb-2">
+                <div class="col">@Html.TextBox("Adresse", null, new { @class = "form-control", placeholder = "Adresse" })</div>
+                <div class="col">@Html.TextBox("Telephone", null, new { @class = "form-control", placeholder = "T√©l√©phone" })</div>
+                <div class="col">@Html.TextBox("DateEmbauche", DateTime.Now.ToString("yyyy-MM-dd"), new { @class = "form-control", type = "date" })</div>
+            </div>
+            <button type="submit" class="btn btn-success">Ajouter</button>
+        }
+    </div>
+</div>
+
+<!-- Tableau des employ√©s avec actions -->
 <table class="table table-hover shadow-sm">
     <thead class="table-primary">
         <tr>
             <th>Nom</th>
-            <th>PrÈnom</th>
+            <th>Pr√©nom</th>
             <th>Email</th>
-            <th>TÈlÈphone</th>
-            <th>Date díembauche</th>
-            <th>Poste actuel</th>
-            <th>DiplÙme</th>
-            <th>Statut</th>
+            <th>T√©l√©phone</th>
+            <th>Adresse</th>
+            <th>Date d'embauche</th>
+            <th>Contrat</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -26,22 +48,32 @@
             foreach (var employe in Model)
             {
                 <tr>
-                    <td>@(string.IsNullOrWhiteSpace(employe.Nom) ? "(N/A)" : employe.Nom)</td>
-                    <td>@(string.IsNullOrWhiteSpace(employe.Prenom) ? "(N/A)" : employe.Prenom)</td>
-                    <td>@(string.IsNullOrWhiteSpace(employe.Email) ? "(N/A)" : employe.Email)</td>
-                    <td>@(string.IsNullOrWhiteSpace(employe.Telephone) ? "(N/A)" : employe.Telephone)</td>
-                    <td>@(employe.DateEmbauche == DateTime.MinValue ? "(N/A)" : employe.DateEmbauche.ToString("dd/MM/yyyy"))</td>
-                    <td>@(employe.Postes != null ? employe.Postes.Intitule : "(N/A)")</td>
-                    <td>@(employe.Diplomes != null ? employe.Diplomes.NomDiplome : "(N/A)")</td>
-                    <td>@(employe.StatutActif ? "Actif" : "Inactif")</td>
+                    <td>@employe.Nom</td>
+                    <td>@employe.Prenom</td>
+                    <td>@employe.Email</td>
+                    <td>@employe.Telephone</td>
+                    <td>@employe.Adresse</td>
+                    <td>@employe.DateEmbauche.ToString("dd/MM/yyyy")</td>
+                    <td>@employe.TypeContrat</td>
                     <td>
-                        @Html.ActionLink(
-                            "DÈtails",
-                            "Details",
-                            "ProfilEmploye",
-                            new { id = employe.IdProfilEmploye },
-                            new { @class = "btn btn-sm btn-outline-secondary rounded-pill" }
-                        )
+                        <!-- Bouton d√©tails -->
+                        @Html.ActionLink("D√©tails", "Details", new { id = employe.IdProfilEmploye }, new { @class = "btn btn-info btn-sm me-1" })
+
+                        <!-- Formulaire inline pour √©dition -->
+                        @using (Html.BeginForm("Edit", "ProfilEmploye", FormMethod.Post, new { @class = "d-inline" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("IdProfilEmploye", employe.IdProfilEmploye)
+                            <button type="submit" class="btn btn-warning btn-sm me-1">Modifier</button>
+                        }
+
+                        <!-- Formulaire inline pour suppression -->
+                        @using (Html.BeginForm("DeleteConfirmed", "ProfilEmploye", FormMethod.Post, new { @class = "d-inline" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("IdProfilEmploye", employe.IdProfilEmploye)
+                            <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                        }
                     </td>
                 </tr>
             }
@@ -49,7 +81,7 @@
         else
         {
             <tr>
-                <td colspan="9" class="text-center text-muted">Aucun employÈ trouvÈ.</td>
+                <td colspan="8" class="text-center text-muted">Aucun employ√© trouv√©.</td>
             </tr>
         }
     </tbody>

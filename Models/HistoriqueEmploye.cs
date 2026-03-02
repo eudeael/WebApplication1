@@ -11,7 +11,7 @@ namespace WebApplication1.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class HistoriqueEmploye
     {
         public int IdHistoriqueEmploye { get; set; }
@@ -26,7 +26,7 @@ namespace WebApplication1.Models
         public string MotifFinContrat { get; set; }
         public string CommentairesRH { get; set; }
         public int IdEmploye { get; set; }
-    
+
         public virtual ProfilEmploye ProfilEmploye { get; set; }
     }
 }

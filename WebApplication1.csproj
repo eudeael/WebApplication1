@@ -118,6 +118,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ProfilScoringController.cs" />
     <Compile Include="Controllers\HistoriqueEmployeController.cs" />
     <Compile Include="Controllers\ScoringController.cs" />
     <Compile Include="Controllers\PostesController.cs" />
@@ -176,7 +177,7 @@
     <Compile Include="Models\ViewModels\CriteresEligibiliteViewModel.cs" />
     <Compile Include="Models\ViewModels\PostesViewModel.cs" />
     <Compile Include="Models\ViewModels\DiplomeViewModel.cs" />
-    <Compile Include="Models\ViewModels\HistoriqueEmployerViewModel - Copier.cs" />
+    <Compile Include="Models\ViewModels\HistoriqueEmployerViewModel.cs" />
     <Compile Include="Models\ViewModels\OffresViewModel.cs" />
     <Compile Include="Models\ViewModels\ScoringViewModel.cs" />
     <Compile Include="Models\ViewModels\ProfilExterneViewModel.cs" />

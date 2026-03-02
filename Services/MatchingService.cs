@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using WebApplication1.Models;
@@ -15,18 +15,18 @@ namespace WebApplication1.Services
             _distanceService = distanceService;
         }
 
-        // Règles : distance calculée, pas de rétrogradation (niveau offre >= niveau actuel), max +5 niveaux
-        public List<PostesModel> MatchOffersForEmployee(
+        // Rï¿½gles : distance calculï¿½e, pas de rï¿½trogradation (niveau offre >= niveau actuel), max +5 niveaux
+        public List<PostesViewModel> MatchOffersForEmployee(
             ProfilEmploye profil,
             List<OffresEmploi> offres,
             List<Postes> postesReference)
         {
-            var result = new List<PostesModel>();
+            var result = new List<PostesViewModel>();
 
             if (profil == null || offres == null || !offres.Any())
                 return result;
 
-            // Déterminer le niveau actuel
+            // Dï¿½terminer le niveau actuel
             string niveauActuel = profil.Postes?.NiveauHierarchique
                                   ?? postesReference.FirstOrDefault(p => p.IdPoste == profil.IdPosteActuel)?.NiveauHierarchique;
 
@@ -36,18 +36,18 @@ namespace WebApplication1.Services
             {
                 var offerRank = GetHierarchyRank(offre.NiveauPoste);
 
-                // Règles métier
-                if (offerRank < currentRank) continue;          // pas de rétrogradation
+                // Rï¿½gles mï¿½tier
+                if (offerRank < currentRank) continue;          // pas de rï¿½trogradation
                 if (offerRank > currentRank + 5) continue;      // max +5 niveaux
 
-                // Distance sécurisée
+                // Distance sï¿½curisï¿½e
                 double distance = 0;
                 if (!string.IsNullOrWhiteSpace(profil.Adresse) && !string.IsNullOrWhiteSpace(offre.Localisation))
                 {
                     distance = _distanceService.CalculateDistanceKm(profil.Adresse, offre.Localisation);
                 }
 
-                result.Add(new PostesModel
+                result.Add(new PostesViewModel
                 {
                     IdOffre = offre.IdOffreEmploi,
                     IntitulePoste = offre.IntitulePoste,
@@ -67,7 +67,7 @@ namespace WebApplication1.Services
                 .ToList();
         }
 
-        // Mapping simple de niveaux hiérarchiques en rangs entiers
+        // Mapping simple de niveaux hiï¿½rarchiques en rangs entiers
         private int GetHierarchyRank(string niveau)
         {
             if (string.IsNullOrWhiteSpace(niveau)) return 0;
@@ -87,7 +87,7 @@ namespace WebApplication1.Services
             var digits = new string(niveau.Where(char.IsDigit).ToArray());
             if (int.TryParse(digits, out var d)) return d;
 
-            return 2; // valeur neutre par défaut
+            return 2; // valeur neutre par dï¿½faut
         }
     }
 }

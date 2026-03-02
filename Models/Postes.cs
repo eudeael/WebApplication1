@@ -11,7 +11,7 @@ namespace WebApplication1.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Postes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,14 +19,14 @@ namespace WebApplication1.Models
         {
             this.ProfilEmploye = new HashSet<ProfilEmploye>();
         }
-    
+
         public int IdPoste { get; set; }
         public string Intitule { get; set; }
         public string NiveauDiplomeRequis { get; set; }
         public string NiveauHierarchique { get; set; }
         public string Description { get; set; }
         public bool MobiliteRequise { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProfilEmploye> ProfilEmploye { get; set; }
     }
