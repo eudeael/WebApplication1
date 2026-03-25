@@ -1,0 +1,39 @@
+@model IEnumerable<WebApplication1.Models.ViewModels.EmployeListItemVM>
+@{
+    ViewBag.Title = "Liste des employés";
+}
+<h2 class="fw-bold mb-3">Employés</h2>
+
+<table class="table table-hover align-middle shadow-sm">
+    <thead class="table-primary">
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Âge</th>
+            <th>Date d'entrée</th>
+            <th>Ancienneté</th>
+            <th>Adresse</th>
+            <th>Poste</th>
+            <th>Niveau</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var e in Model)
+        {
+            <tr>
+                <td>@e.Nom</td>
+                <td>@e.Prenom</td>
+                <td>@e.Age</td>
+                <td>@e.DateEntree.ToString("d")</td>
+                <td>@e.Anciennete</td>
+                <td>@e.Adresse</td>
+                <td>@e.Poste</td>
+                <td>@e.Niveau</td>
+                <td>
+                    <a class="btn btn-sm btn-outline-primary rounded-pill" href="@Url.Action("Emplois","InfoRH", new { id = e.Id })">Offres compatibles</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

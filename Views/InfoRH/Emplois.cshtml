@@ -1,0 +1,57 @@
+@model WebApplication1.Models.ViewModels.EmploisParEmployeVM
+@{
+    ViewBag.Title = "Offres compatibles";
+}
+<div class="row">
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">@Model.Prenom @Model.Nom</h5>
+                <p class="card-text mb-1"><strong>Poste actuel :</strong> @Model.PosteActuel</p>
+                <p class="card-text mb-1"><strong>Niveau :</strong> @Model.NiveauActuel</p>
+                <p class="card-text mb-1"><strong>Âge :</strong> @Model.Age</p>
+                <p class="card-text mb-1"><strong>Ancienneté :</strong> @Model.Anciennete</p>
+                <p class="card-text"><strong>Adresse :</strong> @Model.Adresse</p>
+                <a class="btn btn-primary rounded-pill" href="@Url.Action("Index","InfoRH")">Retour à la liste</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <h4 class="fw-bold">Offres compatibles</h4>
+        <table class="table table-striped shadow-sm">
+            <thead class="table-light">
+                <tr>
+                    <th>Intitulé</th>
+                    <th>Localisation</th>
+                    <th>Niveau</th>
+                    <th>Distance (km)</th>
+                    <th>Salaire</th>
+                    <th>Contrat</th>
+                    <th>Télétravail</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.OffresCompatibles?.Any() != true)
+                {
+                    <tr><td colspan="7" class="text-center">Aucune offre compatible trouvée.</td></tr>
+                }
+                else
+                {
+                    foreach (var o in Model.OffresCompatibles)
+                    {
+                        <tr>
+                            <td>@o.IntitulePoste</td>
+                            <td>@o.Localisation</td>
+                            <td>@o.NiveauPoste</td>
+                            <td>@o.DistanceKm</td>
+                            <td>@o.Salaire.ToString("N0") €</td>
+                            <td>@o.TypeContrat</td>
+                            <td>@(o.TeletravailPossible ? "Oui" : "Non")</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

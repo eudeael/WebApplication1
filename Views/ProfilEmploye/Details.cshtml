@@ -1,0 +1,18 @@
+@model WebApplication1.Models.ProfilEmploye
+@{
+    ViewBag.Title = "Détails employé";
+}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h3 class="card-title">@Model.Prenom @Model.Nom</h3>
+        <p><strong>Email:</strong> @Model.Email</p>
+        <p><strong>Téléphone:</strong> @Model.Telephone</p>
+        <p><strong>Adresse:</strong> @Model.Adresse</p>
+        <p><strong>Date de naissance:</strong> @Model.DateNaissance.ToString("d")</p>
+        <p><strong>Date d'embauche:</strong> @Model.DateEmbauche.ToString("d")</p>
+        <p><strong>Poste actuel:</strong> @(Model.Postes?.Intitule ?? "(N/A)")</p>
+        <p><strong>Diplôme:</strong> @(Model.Diplomes?.NomDiplome ?? "(N/A)")</p>
+        <p><strong>Statut:</strong> @(Model.StatutActif ? "Actif" : "Inactif")</p>
+        <a class="btn btn-primary rounded-pill" href="@Url.Action("Index","ProfilEmploye")">Retour</a>
+    </div>
+</div>
